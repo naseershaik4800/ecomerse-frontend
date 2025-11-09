@@ -38,7 +38,7 @@ class LoginFormClass extends Component {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
-    const url = 'https://ecomerse-backend-production.up.railway.app/login'
+    const url = `${process.env.REACT_APP_API_URL}/login`
 
     const options = {
       method: 'POST',
