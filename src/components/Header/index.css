@@ -1,0 +1,43 @@
+.nav-header {
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-menu,
+.nav-menu-list-mobile {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #000;
+}
+
+.logout-desktop-btn,
+.logout-mobile-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.website-logo{
+    width: 30vw;
+}
+
+.nav-bar-image{
+    width: 40px;
+}
+
+.logout-icon{
+    width: 30px;
+    margin-top: 10px;
+}
+

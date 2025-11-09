@@ -1,0 +1,30 @@
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.login-website-logo-desktop-image{
+  width: 10vw;
+  size: 10px;
+}
+
+.login-image{
+  width: 30vw;
+}

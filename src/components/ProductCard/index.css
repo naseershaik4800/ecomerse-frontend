@@ -1,0 +1,27 @@
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.product-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.product-name {
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.thumbnail{
+  width: 100px;
+  border-radius: 5px;
+}
+
+.title{
+  font-size: 15px;
+  font-family: "Roboto";
+}
+
