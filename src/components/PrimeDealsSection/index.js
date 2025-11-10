@@ -27,7 +27,7 @@ class PrimeDealsSection extends Component {
 
     const jwtToken = Cookies.get('jwt_token')
 
-    // Update this URL to your Railway backend
+ 
     const apiUrl = 'https://ecomerse-backend-production.up.railway.app/prime-deals'
 
     const options = { method: 'GET', headers: {} }

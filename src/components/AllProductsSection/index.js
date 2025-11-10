@@ -35,7 +35,7 @@ class AllProductsSection extends Component {
       fetchError: false,
     })
 
-    const jwtToken = Cookies.get('jwt_token') // Optional; remove if testing without auth
+    const jwtToken = Cookies.get('jwt_token')
     const { activeOptionId } = this.state
     const apiUrl = `https://ecomerse-backend-production.up.railway.app/products?sort_by=${activeOptionId}`
 
