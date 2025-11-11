@@ -56,7 +56,7 @@ class LoginFormClass extends Component {
       if (response.ok === true) {
         this.onSubmitSuccess(data.jwt_token)
       } else {
-        this.onSubmitFailure(data.error_msg || 'Invalid username or password')
+        this.onSubmitFailure(data.error_msg || 'Invalid username or password ')
       }
     } catch (error) {
       console.error('Error:', error)
