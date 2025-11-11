@@ -1,20 +1,13 @@
 import { Component } from 'react'
 import { TailSpin } from 'react-loader-spinner'
-import Cookies from 'js-cookie'
 
 import ProductCard from '../ProductCard'
 import ProductsHeader from '../ProductsHeader'
 import './index.css'
 
 const sortbyOptions = [
-  {
-    optionId: 'PRICE_HIGH',
-    displayText: 'Price (High-Low)',
-  },
-  {
-    optionId: 'PRICE_LOW',
-    displayText: 'Price (Low-High)',
-  },
+  { optionId: 'PRICE_HIGH', displayText: 'Price (High-Low)' },
+  { optionId: 'PRICE_LOW', displayText: 'Price (Low-High)' },
 ]
 
 class AllProductsSection extends Component {
@@ -30,53 +23,31 @@ class AllProductsSection extends Component {
   }
 
   getProducts = async () => {
-    this.setState({
-      isLoading: true,
-      fetchError: false,
-    })
-
-    const jwtToken = Cookies.get('jwt_token')
+    this.setState({ isLoading: true, fetchError: false })
     const { activeOptionId } = this.state
     const apiUrl = `https://ecomerse-backend-production.up.railway.app/products?sort_by=${activeOptionId}`
 
-    const options = {
-      method: 'GET',
-      headers: {},
-    }
-
-    if (jwtToken) {
-      options.headers.Authorization = `Bearer ${jwtToken}`
-    }
-
     try {
-      const response = await fetch(apiUrl, options)
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch products')
-      }
+      const response = await fetch(apiUrl)
+      if (!response.ok) throw new Error('Failed to fetch products')
 
       const fetchedData = await response.json()
 
-      const updatedData = fetchedData.products.map(product => ({
-        id: product.id,
-        title: product.title,
-        brand: product.brand,
-        price: product.price,
-        imageUrl: product.imageUrl, 
-        rating: product.rating,
-      }))
+      const updatedData = Array.isArray(fetchedData)
+        ? fetchedData.map(product => ({
+            id: product.id,
+            title: product.title,
+            brand: product.brand,
+            price: product.price,
+            imageUrl: product.imageUrl,
+            rating: product.rating,
+          }))
+        : []
 
-      this.setState({
-        productsList: updatedData,
-        isLoading: false,
-      })
+      this.setState({ productsList: updatedData, isLoading: false })
     } catch (error) {
       console.error('Error fetching products:', error)
-      this.setState({
-        productsList: [],
-        isLoading: false,
-        fetchError: true,
-      })
+      this.setState({ productsList: [], isLoading: false, fetchError: true })
     }
   }
 
@@ -88,11 +59,7 @@ class AllProductsSection extends Component {
     const { productsList, activeOptionId, fetchError } = this.state
 
     if (fetchError) {
-      return (
-        <div className="products-error">
-          Failed to load products. Please try again later.
-        </div>
-      )
+      return <div className="products-error">Failed to load products. Please try again later.</div>
     }
 
     return (
